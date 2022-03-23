@@ -39,16 +39,16 @@
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
-                        {% for order in orders %}
+                        {% for i in order %}
                         <tr>
-                            <td>{{order.customer_id.first_name}}</td>
-                            <td>{{order.product_id.name}}</td>
-                            <td>{{order.quantity}}</td>
-                            <td>{{order.unit_price}}</td>
-                            <td>{{order.total_price}}</td>
-                            <td><a class="btn btn-sm btn-secondary" href="{% url 'edit' order.id %}">Edit</a></td>
+                            <td>{{i.customer_id__first_name}}</td>
+                            <td>{{i.product_id__name}}</td>
+                            <td>{{i.quantity}}</td>
+                            <td>{{i.unit_price}}</td>
+                            <td>{{i.total_price}}</td>
+                            <td><a class="btn btn-sm btn-secondary" href="{% url 'edit' i.id %}">Edit</a></td>
                             
-                            <td><a class="btn btn-sm btn-secondary" href="{% url 'delete' order.id %}">Delete</a></td>
+                            <td><a class="btn btn-sm btn-secondary" href="{% url 'delete' i.id %}">Delete</a></td>
                         </tr>
                         {% endfor %}
                     </table>

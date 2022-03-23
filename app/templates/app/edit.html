@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,37 +13,59 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="row">
         <div class="col-md-6">
             <div class="card card-body">
-                
-                <form action="" method="POST">
+
+                <form action="{% url 'edit' order.id %}" method="POST">
                     {% comment %} {% csrf_token %}
                     {{form.as_p}}
-                    <input type="submit" name="Submit">  {% endcomment %}
+                    <input type="submit" name="Submit"> {% endcomment %}
                     {% csrf_token %}
-                    <select class="form-control" name="cust">
-                        {% for i in customer %}
-                        <option selected>Customer ID:{{i.customer.first_name}}</option>
-                        
-                        <option value={{i.id}}>{{i}}</option>
-                        {% endfor %}
-                      </select>
-                      <select class="form-control" name="prod">
-                          {% for i in product %}
-                          <option selected>Product ID:{{i.product.name}}</option>
-                        <option value={{i.id}}>{{i}}</option>
-                        {% endfor %}
-                      </select>
-                      <input class="form-control" type="text" placeholder="Price" id="price" name="price">
-                      <input class="form-control" type="text" placeholder="Qty" id="qty" name="qty">
-                      <input class="form-control" type="text" placeholder="Total Price" id="total" name="total">
-                      <button type="submit" class="btn btn-secondary">Submit</button>
+                    <div>
+                        <div>
+                            <label for="">Customer</label>
+                            <select name="cust" id="">
+                                <option value="" selected>{{order.customer_id}}</option>
+                                {% for i in customer %}
+                                <option value={{i.id}}>{{i}}</option>
+                                {% endfor %}
+
+                                <!-- <input type="text" name="cust" value="{{order.customer_id}}" > -->
+                            </select>
+                        </div><br>
+                        <div>
+                            <label for="">Product</label>
+                            <select name="prod" id="">
+                                <option value="" selected>{{order.product_id}}</option>
+                                {% for i in product %}
+                                <option value={{i.id}}>{{i}}</option>
+                                {% endfor %}
+                                <!-- <input type="text" name="prod" value="{{order.product_id}}" > -->
+                            </select>
+                        </div><br>
+                        <div>
+                            <label for="">Price</label>
+                            <input type="number" name="price" id="price" value="{{order.unit_price}}">
+                        </div><br>
+                        <div>
+                            <label for="">Quentity</label>
+                            <input type="number" name="qty" id="qty" value="{{order.quantity}}">
+                        </div><br>
+                        <div>
+                            <label for="">Total Price</label>
+                            <input type="number" name="total" id="totalprice" value="{{order.total_price}}">
+                        </div><br>
+                        <div>
+                            <input type="submit" value="Edit">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-    
+
 </body>
 </html>

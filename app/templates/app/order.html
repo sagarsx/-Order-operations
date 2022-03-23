@@ -26,23 +26,22 @@
                     <input type="submit" name="Submit"> {% endcomment %}
                     {% csrf_token %}
                     <select class="form-control" name="cust">
-                        <option selected value={{}}>Customer ID:</option>
-                        
+                        <option selected>Customer ID:</option>                        
                         {% for i in customer %}
                         <option value={{i.id}}>{{i}}</option>
                         {% endfor %}
                       </select>
                       <select class="form-control" name="prod">
-                          <option selected value={{}}>Product ID:</option>
+                          <option selected>Product ID:</option>
                           {% for i in product %}
                         <option value={{i.id}}>{{i}}</option>
                         {% endfor %}
                       </select>
-                      <input class="form-control" type="text" placeholder="Price" id="price" name="price" value={{}}>
-                      <input class="form-control" type="text" placeholder="Qty" id="qty" name="qty" value={{}}>
-                      <input class="form-control" type="text" placeholder="Total Price" id="total" name="total" value={{}}>
+                      <input class="form-control" type="text" placeholder="Price" id="price" name="price">
+                      <input class="form-control" type="text" placeholder="Qty" id="qty" name="qty">
+                      <input class="form-control" type="text" placeholder="Total Price" id="total" name="total">
                       <button type="submit" class="btn btn-secondary">Submit</button>
-                </form>     
+                </form>
             </div>
         </div>
     </div>
